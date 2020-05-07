@@ -3,12 +3,18 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "type": "module",
   "scripts": {
+    "start": "node --experimental-modules index.js",
+    "start:dev": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "aleksandertsg",
   "license": "ISC",
   "dependencies": {
     "@hapi/hapi": "^19.1.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.3"
   }
 }
