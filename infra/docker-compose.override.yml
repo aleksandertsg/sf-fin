@@ -1,0 +1,30 @@
+version: '3'
+services:
+  back:
+    build: ../sff-back
+    restart: always
+    container_name: sff-back
+    command: "npm run start:dev"
+    volumes:
+      - ../sff-back:/home/node/sff-back
+      - /home/node/sff-back/node_modules
+    ports:
+      - 9001:3001
+
+  front:
+    build:
+      context: ../sff-front
+      dockerfile: Dockerfile.dev
+    volumes:
+      - ../sff-front:/home/node/sff-front
+      - /home/node/sff-front/node_modules
+    restart: always
+    container_name: sff-front
+    ports:
+      - 9000:3000
+    stdin_open: true
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+
+volumes:
+  dbdata:

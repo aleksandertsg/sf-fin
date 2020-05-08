@@ -1,0 +1,33 @@
+version: '3'
+services:
+  db:
+    image: mysql:latest
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    container_name: sff-db
+    environment:
+      MYSQL_ROOT_PASSWORD: sff
+      MYSQL_USER: sff
+      MYSQL_PASSWORD: sff
+      MYSQL_DATABASE: sff
+    ports:
+      - 3306:3306
+    volumes:
+      - dbdata:/var/lib/mysql
+
+  back:
+    build: ../sff-back
+    restart: always
+    container_name: sff-back
+    ports:
+      - 7001:3001
+
+  front:
+    build: ../sff-front
+    restart: always
+    container_name: sff-front
+    ports:
+      - 7000:80
+
+volumes:
+  dbdata:
