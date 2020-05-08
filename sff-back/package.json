@@ -6,13 +6,14 @@
   "type": "module",
   "scripts": {
     "start": "node --experimental-modules index.js",
-    "start:dev": "nodemon index.js",
+    "start:dev": "nodemon --experimental-modules index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "aleksandertsg",
   "license": "ISC",
   "dependencies": {
-    "@hapi/hapi": "^19.1.1"
+    "@hapi/hapi": "^19.1.1",
+    "sequelize": "^5.21.7"
   },
   "devDependencies": {
     "nodemon": "^2.0.3"
