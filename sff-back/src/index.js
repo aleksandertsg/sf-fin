@@ -1,4 +1,6 @@
 import Hapi from '@hapi/hapi'
+import Database from './sequelize.js'
+
 
 const init = async () => {
   const server = Hapi.server({
@@ -6,6 +8,7 @@ const init = async () => {
     host: '0.0.0.0'
   })
 
+  await Database.initAll()
   await server.start()
   console.log('Server running on %s', server.info.uri)
 }
