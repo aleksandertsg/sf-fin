@@ -4,6 +4,10 @@ export default {
     password: 'sff',
     database: 'sff',
     host: 'sff-db:3306',
-    dialect: 'mysql',
+    dialect: 'mysql'
+  },
+  api: {
+    prefix: '/api',
+    jwtSecret: process.env.JWT_SECRET || 'NeverShareYourSecret'
   }
 }

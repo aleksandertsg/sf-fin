@@ -12,7 +12,11 @@
   "author": "aleksandertsg",
   "license": "ISC",
   "dependencies": {
+    "@hapi/boom": "^9.1.0",
     "@hapi/hapi": "^19.1.1",
+    "@hapi/joi": "^17.1.1",
+    "hapi-auth-jwt2": "^10.1.0",
+    "jsonwebtoken": "^8.5.1",
     "mysql2": "^2.1.0",
     "sequelize": "^5.21.7"
   },
