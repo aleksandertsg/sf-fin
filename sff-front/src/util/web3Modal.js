@@ -22,9 +22,10 @@ const loadProvider = async () => {
   })
 
   const provider = await web3Modal.connect()
-  const web3 = new Web3(provider)
 
-  return web3
+  return new Web3(provider)
 }
+
+
 
 export default { loadProvider }
