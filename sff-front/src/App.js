@@ -1,6 +1,11 @@
 import React from 'react'
-import { Grommet, Box, Button } from 'grommet'
-import web3Modal from './util/web3Modal'
+import { Grommet } from 'grommet'
+import { AppContextProvider } from './contexts/appContext'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import Login from './view/Login'
+import Home from './view/Home'
+import PrivateRoute from './component/PrivateRoute'
+
 
 const theme = {
   global: {
@@ -12,41 +17,19 @@ const theme = {
   }
 }
 
-const AppBar = (props) => (
-  <Box
-    tag='header'
-    direction='row'
-    align='center'
-    justify='between'
-    background='brand'
-    pad={{ left: 'medium', right: 'small', vertical: 'small' }}
-    elevation='medium'
-    style={{ zIndex: '1' }}
-    {...props}
-  />
-)
-
-class App extends React.Component {
-  async login () {
-    const web3 = await web3Modal.loadProvider()
-    const accounts = await web3.eth.getAccounts()
-    console.log({ accounts })
-  }
-
-  render () {
-    return (
-      <Grommet theme={theme}>
-        <AppBar>Hello!</AppBar>
-        <Box
-          align='center'
-          margin='10pt auto'
-        >
-          <Button primary label="Login" onClick={this.login} />
-        </Box>
-
-      </Grommet>
-    )
-  }
+const App = () => {
+  return (
+    <Router>
+      <AppContextProvider>
+        <Grommet theme={theme}>
+          <Switch>
+            <PrivateRoute path="/home" component={Home} />
+            <Route path="/" component={Login} />
+          </Switch>
+        </Grommet>
+      </AppContextProvider>
+    </Router>
+  )
 }
 
 export default App

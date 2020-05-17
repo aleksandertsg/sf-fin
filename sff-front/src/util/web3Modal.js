@@ -1,16 +1,15 @@
 import Web3 from 'web3'
 import Web3Modal from 'web3modal'
 import Portis from '@portis/web3'
+import config from '../config'
 
-
-console.log(process.env.REACT_APP_PORTIS_ID)
 
 const loadProvider = async () => {
   const providerOptions = {
     portis: {
       package: Portis,
       options: {
-        id: process.env.REACT_APP_PORTIS_ID || 'PORTIS_ID'
+        id: config.portisId
       }
     }
   }
@@ -26,6 +25,4 @@ const loadProvider = async () => {
   return new Web3(provider)
 }
 
-
-
-export default { loadProvider }
+export { loadProvider }
