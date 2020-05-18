@@ -6,8 +6,8 @@ import fs from 'fs'
 
 class Database {
   constructor () {
-    const config = config.database
-    const url = `mysql://${config.username}:${config.password}@${config.host}/${config.database}`
+    const { username, password, host, database } = config.database
+    const url = `mysql://${username}:${password}@${host}/${database}`
 
     this.sequelize = new Sequelize(url, {
       define: {
