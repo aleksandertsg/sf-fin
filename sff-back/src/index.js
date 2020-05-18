@@ -9,7 +9,8 @@ import hapiAuthJwt2 from 'hapi-auth-jwt2'
 const init = async () => {
   const server = Hapi.server({
     port: 3001,
-    host: '0.0.0.0'
+    host: '0.0.0.0',
+    routes: { cors: { origin: ["*"] } }
   })
 
   await Database.initAll()
