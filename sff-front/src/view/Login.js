@@ -7,7 +7,7 @@ import useAppContext from '../contexts/appContext'
 
 
 const Login = ({ history }) => {
-  const { setWeb3 } = useAppContext()
+  const { setWeb3, setAccount } = useAppContext()
   const { login, loading } = useAPI()
 
   const callLogin = useCallback(async () => {
@@ -20,13 +20,14 @@ const Login = ({ history }) => {
     if (loading) return
 
     if (accounts[0]) {
+      setAccount(accounts[0])
       const signature = await getLoginSignature(web3, accounts[0])
 
       await login(accounts[0], signature)
     }
 
     history.push('/home')
-  }, [setWeb3, history, loading, login])
+  }, [setWeb3, history, loading, login, setAccount])
 
   return (
     <Main pad="xlarge">
