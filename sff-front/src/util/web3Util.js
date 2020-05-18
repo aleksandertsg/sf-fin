@@ -25,4 +25,19 @@ const loadProvider = async () => {
   return new Web3(provider)
 }
 
-export { loadProvider }
+const getLoginSignature = async (web3, walletAddress) => {
+  let msg = walletAddress.replace('0x', '')
+  const msg2 = '\x19Ethereum Signed Message:\n' + msg.length + msg
+
+  return web3.eth.personal.sign(
+    msg2,
+    walletAddress,
+    (err, signature) => {
+      if (err) console.error(err)
+      return signature
+    }
+  )
+}
+
+
+export { loadProvider, getLoginSignature }

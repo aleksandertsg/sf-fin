@@ -27,11 +27,11 @@ const useAPI = (baseURL = config.apiURL) => {
     }
   })
 
-  const login = async (walletAddress) => {
+  const login = async (walletAddress, signedMessage) => {
     setLoading(true)
 
     try {
-      const { data } = await instance.post('/auth/login', { walletAddress })
+      const { data } = await instance.post('/auth/login', { walletAddress, signedMessage })
 
       setAuth(data.jwt, data.name)
     } catch (error) {

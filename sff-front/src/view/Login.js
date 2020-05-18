@@ -1,6 +1,6 @@
 import { Button, Heading, Main, Paragraph } from 'grommet'
 import React, { useCallback } from 'react'
-import { loadProvider } from '../util/web3Modal'
+import { getLoginSignature, loadProvider } from '../util/web3Util'
 import useAPI from '../hooks/useAPI'
 import { withRouter } from 'react-router-dom'
 import useAppContext from '../contexts/appContext'
@@ -19,7 +19,11 @@ const Login = ({ history }) => {
 
     if (loading) return
 
-    if (accounts[0]) await login(accounts[0])
+    if (accounts[0]) {
+      const signature = await getLoginSignature(web3, accounts[0])
+
+      await login(accounts[0], signature)
+    }
 
     history.push('/home')
   }, [setWeb3, history, loading, login])
