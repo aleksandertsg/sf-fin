@@ -19,6 +19,8 @@ services:
     build: ../sff-back
     restart: always
     container_name: sff-back
+    depends_on:
+      - db
     ports:
       - 7001:3001
 
