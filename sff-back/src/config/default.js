@@ -4,7 +4,8 @@ export default {
     password: 'sff',
     database: 'sff',
     host: 'sff-db:3306',
-    dialect: 'mysql'
+    dialect: 'mysql',
+    forceSync: process.env.DB_FORCE_SYNC === 'true' || false
   },
   api: {
     prefix: '/api',

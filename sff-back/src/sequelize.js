@@ -1,12 +1,12 @@
 import Sequelize from 'sequelize'
-import Config from './config/index.js'
+import config from './config/index.js'
 import path from 'path'
 import fs from 'fs'
 
 
 class Database {
   constructor () {
-    const config = Config.database
+    const config = config.database
     const url = `mysql://${config.username}:${config.password}@${config.host}/${config.database}`
 
     this.sequelize = new Sequelize(url, {
@@ -32,7 +32,7 @@ class Database {
         }
       }
 
-      this.sequelize.sync()
+      this.sequelize.sync({ force: config.database.forceSync })
     } catch (e) {
       console.error('Err! ', e)
     }
