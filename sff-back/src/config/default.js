@@ -3,7 +3,7 @@ export default {
     username: 'sff',
     password: 'sff',
     database: 'sff',
-    host: 'sff-db:3306',
+    host: process.env.DB_HOST || 'sff-db:3306',
     dialect: 'mysql',
     forceSync: process.env.DB_FORCE_SYNC === 'true' || false
   },
