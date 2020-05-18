@@ -3,6 +3,7 @@ import getAppContext from '../contexts/appContext'
 import { Button, Heading, Main, Paragraph } from 'grommet'
 import useAuthentication from '../hooks/useAuthentication'
 import useAPI from '../hooks/useAPI'
+import NeoBox from '../component/NeoBox'
 
 
 const Home = () => {
@@ -23,17 +24,20 @@ const Home = () => {
     }
 
     loadBalances()
-  }, [account, getDaiBalance, web3.eth, web3.utils])
+  }, [])
 
   return (
     <Main pad="xlarge">
-      <Heading size='xlarge'>{`Hi ${user} !`}</Heading>
-      <Paragraph>Something about something</Paragraph>
-      <Paragraph>{eth} ETH</Paragraph>
-      <Paragraph>{dai} DAI</Paragraph>
-      <Paragraph>
-        <Button primary label="Logout" onClick={() => setAuth()} />
-      </Paragraph>
+      <NeoBox>
+        <Heading>{`Hi,`}</Heading>
+        <Heading>{`${user}!`}</Heading>
+        <Paragraph>Here are your balances:</Paragraph>
+        <Paragraph>{eth} ETH</Paragraph>
+        <Paragraph>{dai} DAI</Paragraph>
+        <Paragraph>
+          <Button primary label="Logout" onClick={() => setAuth()} />
+        </Paragraph>
+      </NeoBox>
     </Main>
   )
 }

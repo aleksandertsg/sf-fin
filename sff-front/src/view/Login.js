@@ -4,6 +4,7 @@ import { getLoginSignature, loadProvider } from '../util/web3Util'
 import useAPI from '../hooks/useAPI'
 import { withRouter } from 'react-router-dom'
 import useAppContext from '../contexts/appContext'
+import NeoBox from '../component/NeoBox'
 
 
 const Login = ({ history }) => {
@@ -30,12 +31,14 @@ const Login = ({ history }) => {
   }, [setWeb3, history, loading, login, setAccount])
 
   return (
-    <Main pad="xlarge">
-      <Heading>Something</Heading>
-      <Paragraph>Something about something</Paragraph>
-      <Paragraph>
-        <Button primary label="Login" disabled={loading} onClick={callLogin} />
-      </Paragraph>
+    <Main pad='xlarge'>
+      <NeoBox>
+        <Heading>Hi!</Heading>
+        <Paragraph>Lets try to connect your wallet</Paragraph>
+        <Paragraph>
+          <Button primary label={'Connect'} disabled={loading} onClick={callLogin} />
+        </Paragraph>
+      </NeoBox>
     </Main>
   )
 }

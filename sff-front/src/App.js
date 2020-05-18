@@ -9,6 +9,7 @@ import PrivateRoute from './component/PrivateRoute'
 
 const theme = {
   global: {
+    themeMode: 'dark',
     font: {
       family: 'Roboto',
       size: '18px',

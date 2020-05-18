@@ -44,13 +44,23 @@ const useAPI = (baseURL = config.apiURL) => {
   }
 
   const getDaiBalance = async (walletAddress) => {
-    const { data: { value, message } } = await instance.post('/balance/dai', { walletAddress })
+    setLoading(true)
 
-    if (message === 'OK') {
-      return value
+    try {
+      const { data: { value, message } } = await instance.post('/balance/dai', { walletAddress })
+
+      if (message === 'OK') {
+        return value
+      }
+
+      return null
+    } catch (e) {
+      setError(error)
+
+      throw error
+    } finally {
+      setLoading(false)
     }
-
-    return null
   }
 
   return {
