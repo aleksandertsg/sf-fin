@@ -4,7 +4,7 @@
 In order to run this service you will need additional `docker-compose.override.yml` file, provided **separately**.
 
 ### Running with docker
-* in `infra` folder run `docker-compose up --build`
+* in `infra` folder run `docker-compose up`
 
 ### Running without docker
 * in `sff-back` folder `npm run start`
